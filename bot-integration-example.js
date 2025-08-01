@@ -2,7 +2,7 @@
 // Используйте этот код в вашем Telegram Bot для обработки результатов игры
 
 const TelegramBot = require('node-telegram-bot-api');
-const bot = new TelegramBot('YOUR_BOT_TOKEN', { polling: true });
+const bot = new TelegramBot('7819461914:AAHG0KojLn3yESSPunxToNYT9hyOzPOerTk', { polling: true });
 
 // Хранилище результатов (в реальном проекте используйте базу данных)
 const gameResults = [];
@@ -14,7 +14,7 @@ bot.onText(/\/start/, (msg) => {
         inline_keyboard: [[
             {
                 text: "🎮 Играть в Programming Match-3",
-                web_app: { url: "https://your-domain.com/programming-match3-game" }
+                web_app: { url: "https://t.me/kolesa_game_bot/Diasgame" }
             }
         ]]
     };
@@ -85,7 +85,7 @@ bot.on('web_app_data', (msg) => {
             inline_keyboard: [[
                 {
                     text: "🎮 Играть снова",
-                    web_app: { url: "https://your-domain.com/programming-match3-game" }
+                    web_app: { url: "https://t.me/kolesa_game_bot/Diasgame" }
                 }
             ]]
         };
@@ -121,7 +121,7 @@ bot.onText(/\/top/, (msg) => {
         inline_keyboard: [[
             {
                 text: "🎮 Играть",
-                web_app: { url: "https://your-domain.com/programming-match3-game" }
+                web_app: { url: "https://t.me/kolesa_game_bot/Diasgame" }
             }
         ]]
     };
