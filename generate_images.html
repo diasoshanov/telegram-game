@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Генератор изображений для игры</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .image-container { display: inline-block; margin: 10px; text-align: center; }
+        canvas { border: 1px solid #ccc; }
+        .download-btn { margin-top: 10px; padding: 5px 10px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Генератор изображений для Match-3 игры</h1>
+    <p>Нажмите на кнопки, чтобы скачать изображения для игры:</p>
+    
+    <div id="images"></div>
+
+    <script>
+        const icons = [
+            { name: 'star', color: '#ffd700', symbol: '★' },
+            { name: 'heart', color: '#ff6b6b', symbol: '❤' },
+            { name: 'diamond', color: '#4ecdc4', symbol: '◆' },
+            { name: 'fire', color: '#ff8c42', symbol: '🔥' },
+            { name: 'lightning', color: '#ffd93d', symbol: '⚡' },
+            { name: 'crown', color: '#ff9ff3', symbol: '👑' },
+            { name: 'gem', color: '#54a0ff', symbol: '💎' },
+            { name: 'rocket', color: '#5f27cd', symbol: '🚀' }
+        ];
+
+        function createImage(name, color, symbol) {
+            const container = document.createElement('div');
+            container.className = 'image-container';
+            
+            const canvas = document.createElement('canvas');
+            canvas.width = 64;
+            canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+            
+            // Фон
+            ctx.fillStyle = color;
+            ctx.fillRect(0, 0, 64, 64);
+            
+            // Символ
+            ctx.fillStyle = 'white';
+            ctx.font = '32px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(symbol, 32, 32);
+            
+            // Рамка
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(2, 2, 60, 60);
+            
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'download-btn';
+            downloadBtn.textContent = `Скачать ${name}.png`;
+            downloadBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.download = `${name}.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+            };
+            
+            container.appendChild(canvas);
+            container.appendChild(downloadBtn);
+            
+            return container;
+        }
+
+        const imagesContainer = document.getElementById('images');
+        icons.forEach(icon => {
+            imagesContainer.appendChild(createImage(icon.name, icon.color, icon.symbol));
+        });
+    </script>
+</body>
+</html> 

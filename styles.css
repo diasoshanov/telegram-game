@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    color: white;
+}
+
+.score-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.score, .time {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 2px;
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tile {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 2px;
+}
+
+.tile:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tile.selected {
+    border-color: #667eea;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+}
+
+.tile.matched {
+    animation: matchAnimation 0.5s ease-in-out;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+@keyframes matchAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.game-over-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 300px;
+    width: 90%;
+}
+
+.game-over-content h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.game-over-content p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.game-over-content .btn {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+    .game-container {
+        margin: 5px;
+        padding: 15px;
+    }
+    
+    .tile {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .controls {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+/* Анимации для появления новых плиток */
+.tile.new {
+    animation: newTileAnimation 0.5s ease-out;
+}
+
+@keyframes newTileAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Стили для иконок языков программирования */
+.tile[data-type="java"] { background: linear-gradient(135deg, #ed8b00, #ff6b35); }
+.tile[data-type="android"] { background: linear-gradient(135deg, #3ddc84, #2bb673); }
+.tile[data-type="swift"] { background: linear-gradient(135deg, #ff6b35, #ff4500); }
+.tile[data-type="go"] { background: linear-gradient(135deg, #00add8, #0099cc); }
+.tile[data-type="csharp"] { background: linear-gradient(135deg, #239120, #1e7e1e); }
+.tile[data-type="php"] { background: linear-gradient(135deg, #777bb4, #6c5ce7); }
+.tile[data-type="javascript"] { background: linear-gradient(135deg, #f7df1e, #f4d03f); }
+.tile[data-type="python"] { background: linear-gradient(135deg, #3776ab, #2d5aa0); } 

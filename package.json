@@ -1,0 +1,36 @@
+{
+  "name": "programming-match3-game",
+  "version": "1.0.0",
+  "description": "Игра 'Три в ряд' с иконками языков программирования для Telegram Mini App",
+  "main": "bot-integration-example.js",
+  "scripts": {
+    "start": "node bot-integration-example.js",
+    "dev": "node bot-integration-example.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "telegram",
+    "mini-app",
+    "game",
+    "match3",
+    "programming",
+    "kolesa-conf"
+  ],
+  "author": "Developer for Kolesa Conf",
+  "license": "MIT",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.64.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/programming-match3-game.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/programming-match3-game/issues"
+  },
+  "homepage": "https://github.com/your-username/programming-match3-game#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 
