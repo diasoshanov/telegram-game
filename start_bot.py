@@ -9,6 +9,7 @@ import json
 import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+# Удаляю импорт requests и datetime, функцию send_to_google_sheet и её вызовы
 
 # Конфигурация
 BOT_TOKEN = "7819461914:AAHG0KojLn3yESSPunxToNYT9hyOzPOerTk"
@@ -16,6 +17,8 @@ GAME_URL = "https://t.me/kolesa_game_bot/Diasgame"  # URL вашего Web App
 
 # Хранилище результатов (в памяти)
 game_results = []
+
+# Удаляю импорт requests и datetime, функцию send_to_google_sheet и её вызовы
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработка команды /start"""
@@ -91,6 +94,10 @@ async def handle_web_app_data(update: Update, context: ContextTypes.DEFAULT_TYPE
         reply_markup = InlineKeyboardMarkup(keyboard)
         
         await update.message.reply_text(message, reply_markup=reply_markup)
+        
+        # score = game_result.get("score", 0)
+        # dt = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        # send_to_google_sheet(user_name, score, dt)  # Удалено
         
     except Exception as e:
         print(f"Ошибка при обработке результата: {e}")
